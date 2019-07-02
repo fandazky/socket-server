@@ -17,7 +17,7 @@ If you just want to see it running, visit: http://chat.tegioz.com
 
 ### Get the code
 
-    git clone https://github.com/tegioz/chat.git
+    git clone https://github.com/fandazky/socket-server.git
 
 ### Run
 

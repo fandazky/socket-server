@@ -1,0 +1,34 @@
+*** nsp
+*** server
+*** adapter
+*** id
+*** client
+*** conn
+*** rooms
+*** acks
+*** connected
+*** disconnected
+*** handshake
+*** fns
+*** flags
+*** _rooms
+*** _events
+*** _eventsCount
+
+
+ADAPTER:
+>>  nsp
+>>  rooms
+>>  sids
+>>  encoder
+>>  uid
+>>  prefix
+>>  requestsTimeout
+>>  channel
+>>  requestChannel
+>>  responseChannel
+>>  requests
+>>  customHook
+>>  channelMatches
+>>  pubClient
+>>  subClient
