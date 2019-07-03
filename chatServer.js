@@ -1,16 +1,12 @@
 // ***************************************************************************
 // General
 // ***************************************************************************
+require('dotenv').config();
 
 const conf = { 
-    port: 8888,
-    debug: false,
-    dbPort: 6379,
-    dbHost: '127.0.0.1',
-    dbOptions: {},
-    mainroom: 'MainRoom'
+  debug: JSON.parse(process.env.APP_DEBUG),
+  mainroom: process.env.CHAT_ROOM_MAIN
 };
-
 // External dependencies
 const express = require('express');
 const http = require('http');
@@ -23,13 +19,13 @@ const app = express();
 const router = express.Router();
 const server = http.createServer(app);
 
-server.listen(conf.port);
+server.listen(parseInt(process.env.APP_PORT));
 
 const io = require('socket.io')(server);
 const redis = require('socket.io-redis');
-io.adapter(redis({ host: conf.dbHost, port: conf.dbPort }));
+io.adapter(redis({ host: process.env.REDIS_HOST, port: parseInt(process.env.REDIS_PORT) }));
 
-const db = require('redis').createClient(conf.dbPort,conf.dbHost);
+const db = require('redis').createClient(parseInt(process.env.REDIS_PORT), process.env.REDIS_HOST);
 
 // Logger configuration
 const logger = new events.EventEmitter();
@@ -180,7 +176,6 @@ io.sockets.on('connection', function(socket) {
         var usersInRoom = [];
         // var socketsInRoom = _.keys(io.nsps['/'].adapter.rooms[data.room]);
         var socketsInRoom = _.keys(io.sockets.adapter.rooms[data.room].sockets);
-        console.log('SOCKETINROOM', socketsInRoom);
         for (var i=0; i<socketsInRoom.length; i++) {
             db.hgetall(socketsInRoom[i], function(err, obj) {
 
