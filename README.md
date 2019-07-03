@@ -3,11 +3,10 @@
 Built with:
 
   - <strong>Server side:</strong> Node.js, Socket.io, Express, Redis
-  - <strong>Client side:</strong> HTML5 Boilerplate, Bootstrap, Handlebars and jQuery
 
 This is just a <strong>proof of concept</strong> of what could be done with these technologies.
 
-If you just want to see it running, visit: http://chat.tegioz.com
+This project is fixing & modifying from https://github.com/tegioz/chat.git
 
 ### Requires
 
